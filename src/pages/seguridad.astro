@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+import InternalPageHero from '../components/InternalPageHero.astro';
+import InternalVisual from '../components/InternalVisual.astro';
+const principles = ['Seguridad desde el diseño', 'Autenticación multifactor', 'Recuperación segura', 'Gestión de sesiones', 'Autorización y mínimo privilegio', 'Separación de identidades', 'Protección de datos y almacenamiento', 'Trazabilidad', 'Revisión continua', 'Cultura y concientización'];
+---
+<BaseLayout title="Seguridad | Hesed Core" description="Security by Culture: principios de seguridad que guían el trabajo de Hesed Core." path="/seguridad">
+  <InternalPageHero eyebrow="Security by Culture" title="La seguridad se diseña, se practica y se sostiene entre todos." description="Integramos seguridad desde la arquitectura, sin prometer absolutos ni afirmar certificaciones que no estén documentadas." variant="security"><InternalVisual variant="security" /></InternalPageHero>
+  <section class="content-section"><div class="container"><p class="eyebrow">Principios</p><h2>Una responsabilidad distribuida en cada decisión.</h2><div class="principle-grid">{principles.map((principle, index) => <article><span>{String(index + 1).padStart(2, '0')}</span><h3>{principle}</h3></article>)}</div></div></section>
+  <section class="content-section dark-content"><div class="container content-grid"><div><p class="eyebrow">Implementado y en evolución</p><h2>Claridad sobre lo que existe y lo que sigue creciendo.</h2></div><p>Las capacidades de identidad, MFA, recuperación, sesiones y autorización forman parte de la base actual. La trazabilidad, la revisión continua y la concientización se fortalecen de manera progresiva.</p></div></section>
+</BaseLayout>

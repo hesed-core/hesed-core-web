@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+import InternalPageHero from '../components/InternalPageHero.astro';
+import InternalVisual from '../components/InternalVisual.astro';
+const capabilities = [
+  ['01', 'Identidad y autenticación', 'Modelos de acceso, seguridad y gestión de sesiones diseñados para operar con control y trazabilidad.'],
+  ['02', 'MFA y recuperación', 'Flujos de autenticación multifactor y recuperación segura para reforzar la verificación.'],
+  ['03', 'Sesiones y autorización', 'Permisos y responsabilidades separadas entre clientes, usuarios y servicios.'],
+  ['04', 'Servicios compartidos', 'Capacidades reutilizables que reducen duplicidad y fortalecen la consistencia.'],
+  ['05', 'Datos', 'Diseño orientado a integridad, escalabilidad y políticas de acceso.'],
+  ['06', 'Almacenamiento de objetos con MinIO', 'Fundamentos para conservar y operar información de forma mantenible.'],
+  ['07', 'Trazabilidad y observabilidad', 'Evolución futura para construir evidencia y revisar decisiones con criterio.']
+];
+---
+<BaseLayout title="Plataforma | Hesed Core" description="El núcleo tecnológico del ecosistema Hesed Core y sus capacidades compartidas." path="/plataforma">
+  <InternalPageHero eyebrow="Plataforma" title="El núcleo tecnológico del ecosistema Hesed Core." description="Hesed Core Platform concentra capacidades compartidas para que cada producto pueda evolucionar con identidad, seguridad y responsabilidades claramente separadas." variant="platform"><InternalVisual variant="architecture" /></InternalPageHero>
+  <section class="content-section"><div class="container content-grid"><div class="section-stamp">01 / Evolución arquitectónica</div><div><h2>Del producto inicial a un ecosistema con fundamentos compartidos.</h2><p>El crecimiento de un producto permite aprender qué responsabilidades deben separarse y qué capacidades conviene compartir. Hesed Core Platform representa esa evolución natural: un núcleo corporativo que sostiene productos independientes sin borrar su identidad.</p></div></div></section>
+  <section id="capacidades" class="content-section dark-content"><div class="container"><p class="eyebrow">Capacidades compartidas</p><h2>Fundamentos para construir con claridad.</h2><div class="capability-table">{capabilities.map((capability) => <article><span>{capability[0]}</span><div><h3>{capability[1]}</h3><p>{capability[2]}</p></div></article>)}</div></div></section>
+  <section class="content-section"><div class="container content-grid"><div class="section-stamp">03 / Separación por producto</div><div><h2>Una base común, experiencias independientes.</h2><p>Business / TrimmOS y Hesed Customer Platform conservan su propósito, experiencia e identidad mientras consumen fundamentos compartidos de Hesed Core Platform.</p></div></div></section>
+</BaseLayout>

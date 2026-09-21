@@ -1,966 +1,115 @@
 ---
-import Navbar from '../components/navbar.astro';
-import '../styles/global.css';
+import BaseLayout from '../components/BaseLayout.astro';
 ---
+<BaseLayout title="Hesed Core | Ingeniería de Software con Propósito" description="Hesed Core diseña plataformas y productos digitales con arquitectura escalable, identidades separadas y seguridad integrada desde el origen.">
+  <section class="home-hero">
+    <div class="container hero-grid">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Ingeniería de software con propósito</p>
+        <h1>Ingeniería de software diseñada para evolucionar con seguridad.</h1>
+        <p class="hero-lead">Diseñamos plataformas y productos digitales con arquitectura escalable, identidades separadas y seguridad integrada desde el origen.</p>
+        <div class="actions"><a class="button button-primary" href="/plataforma">Conocer el ecosistema</a><a class="button button-quiet" href="/contacto">Hablar con Hesed Core</a></div>
+        <p class="hero-note">Security by Culture <span>·</span> García, Nuevo León, México</p>
+      </div>
+      <div class="hero-visual reveal reveal-delay" aria-label="Relación conceptual del ecosistema Hesed Core">
+        <div class="core-orb" data-core-orb>
+          <div class="orb-aura" aria-hidden="true"></div>
+          <svg class="orb-orbits" viewBox="0 0 620 480" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+            <ellipse class="orb-orbit orb-orbit-wide" cx="310" cy="240" rx="258" ry="148" />
+            <ellipse class="orb-orbit orb-orbit-tight" cx="310" cy="240" rx="190" ry="108" />
+            <circle class="orb-marker marker-left" cx="63" cy="240" r="3" />
+            <circle class="orb-marker marker-right" cx="557" cy="240" r="3" />
+          </svg>
+          <button class="orb-product orb-product-left" type="button" data-orb-target="business">
+            <small>Producto</small>
+            <strong>Business / TrimmOS</strong>
+          </button>
+          <button class="orb-product orb-product-right" type="button" data-orb-target="customer">
+            <small>Producto</small>
+            <strong>Hesed Customer Platform</strong>
+          </button>
+          <div class="orb-core" data-orb-target="core">
+            <img src="/brand/hesed-core-isotipo.png" alt="" width="72" height="72" />
+            <strong>Hesed Core Platform</strong>
+            <small>Núcleo del ecosistema</small>
+          </div>
+          <span class="orb-data-dot orb-data-dot-one" aria-hidden="true"></span>
+          <span class="orb-data-dot orb-data-dot-two" aria-hidden="true"></span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<html lang="es" class="scroll-smooth">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" type="image/png" href="/Hesed-Core-logo.png" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Hesed Core | Ingeniería de Software con Propósito</title>
-        <meta name="description" content="Hesed Core diseña y construye plataformas y productos digitales preparados para evolucionar, crecer y proteger la información que sus clientes confían." />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-        <style>
-            body { font-family: 'Inter', sans-serif; }
-            .hero-gradient {
-                background: linear-gradient(135deg, 
-                    rgba(16, 185, 129, 0.08) 0%, 
-                    rgba(59, 130, 246, 0.08) 50%, 
-                    rgba(245, 158, 11, 0.04) 100%);
-            }
-            .floating-shapes {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                overflow: hidden;
-                z-index: 0;
-            }
-            .product-card {
-                min-height: 430px;
-            }
-            .platform-visual {
-                background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(248,250,252,1) 100%);
-            }
-            .core-cloud {
-                position: relative;
-                isolation: isolate;
-                animation: coreFloat 4.8s ease-in-out infinite;
-            }
-            .core-cloud::before {
-                content: '';
-                position: absolute;
-                z-index: -1;
-                left: 7%;
-                right: 7%;
-                bottom: 6%;
-                height: 25%;
-                border-radius: 999px;
-                background: rgba(255, 255, 255, 0.96);
-                box-shadow:
-                    -58px 8px 0 -8px rgba(255, 255, 255, 0.96),
-                    -25px -13px 0 -2px rgba(255, 255, 255, 0.96),
-                    25px -18px 0 3px rgba(255, 255, 255, 0.96),
-                    61px 6px 0 -6px rgba(255, 255, 255, 0.96),
-                    0 16px 22px rgba(59, 130, 246, 0.14);
-            }
-            .core-cloud::after {
-                content: '';
-                position: absolute;
-                z-index: -2;
-                left: 14%;
-                right: 14%;
-                bottom: 3%;
-                height: 12%;
-                border-radius: 50%;
-                background: rgba(59, 130, 246, 0.16);
-                filter: blur(12px);
-                transform: scaleX(0.9);
-                animation: cloudShadow 4.8s ease-in-out infinite;
-            }
-            @keyframes coreFloat {
-                0%, 100% { transform: translateY(0) rotate(-1deg); }
-                50% { transform: translateY(-14px) rotate(1deg); }
-            }
-            @keyframes cloudShadow {
-                0%, 100% { opacity: 0.7; transform: scaleX(0.9); }
-                50% { opacity: 0.4; transform: scaleX(0.72); }
-            }
-            @media (prefers-reduced-motion: reduce) {
-                .core-cloud,
-                .core-cloud::after {
-                    animation: none;
-                }
-            }
-            .shape {
-                position: absolute;
-                border-radius: 50%;
-                background: linear-gradient(45deg, rgba(16, 185, 129, 0.08), rgba(59, 130, 246, 0.08));
-                animation: float 6s ease-in-out infinite;
-            }
-            .shape:nth-child(1) {
-                width: 80px;
-                height: 80px;
-                top: 10%;
-                left: 10%;
-                animation-delay: 0s;
-            }
-            .shape:nth-child(2) {
-                width: 60px;
-                height: 60px;
-                top: 20%;
-                right: 15%;
-                animation-delay: 2s;
-            }
-            .shape:nth-child(3) {
-                width: 100px;
-                height: 100px;
-                bottom: 20%;
-                left: 20%;
-                animation-delay: 4s;
-            }
-            @keyframes float {
-                0%, 100% { transform: translateY(0px) rotate(0deg); }
-                50% { transform: translateY(-20px) rotate(180deg); }
-            }
-        </style>
-    </head>
-    <body class="bg-white text-gray-900 hero-gradient min-h-screen">
-        <Navbar />
+  <section class="home-section principles-section" data-reveal-section>
+    <div class="container narrow-intro"><p class="eyebrow">Nuestra forma de construir</p><h2>Arquitectura, seguridad y evolución desde el origen.</h2><p>No construimos funciones aisladas. Diseñamos bases tecnológicas capaces de crecer, separar responsabilidades y sostener nuevos productos.</p></div>
+    <div class="container principle-list">
+      <article><span>01</span><div><h3>Arquitectura preparada para evolucionar</h3><p>Separamos dominios, identidades y responsabilidades para que cada producto pueda crecer con claridad.</p></div></article>
+      <article><span>02</span><div><h3>Security by Culture</h3><p>La seguridad forma parte de cada decisión, desde la identidad hasta los datos y la operación.</p></div></article>
+      <article><span>03</span><div><h3>Productos conectados</h3><p>Un núcleo de capacidades compartidas permite construir experiencias independientes sin duplicar fundamentos.</p></div></article>
+    </div>
+  </section>
 
-        <!-- HERO SECTION - "Ingeniería de Software con Propósito" -->
-        <section class="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
-            <div class="floating-shapes">
-                <div class="shape"></div>
-                <div class="shape"></div>
-                <div class="shape"></div>
-            </div>
-            
-            <div class="max-w-6xl mx-auto w-full text-center relative z-10">
-                <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-8 leading-tight">
-                    Ingeniería de Software
-                    <br class="hidden sm:block"><span class="text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-blue-600 to-green-600">con Propósito</span>
-                </h1>
-                
-                <p class="text-lg sm:text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto mb-12 leading-relaxed px-4">
-                    Hesed Core diseña y construye plataformas y productos digitales preparados para 
-                    <strong class="text-gray-900">evolucionar, crecer y proteger</strong> la información que tus clientes confían.
-                </p>
-                
-                <!-- CTA Buttons -->
-                <div class="flex flex-col sm:flex-row justify-center items-stretch sm:items-center gap-4 sm:gap-6 mt-12">
-                    <a href="#platform" class="group bg-gradient-to-r from-green-600 to-green-700 text-white px-8 py-4 rounded-2xl font-bold text-lg shadow-lg hover:shadow-green-600/40 hover-lift transition-all duration-300">
-                        <span class="flex items-center justify-center gap-2">
-                            Conocer Hesed Core Platform
-                            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                            </svg>
-                        </span>
-                    </a>
-                    
-                    <a href="#productos" class="group bg-white border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-2xl font-bold text-lg hover:border-blue-500 hover:text-blue-600 transition-all duration-300 hover-lift">
-                        <span class="flex items-center justify-center gap-2">
-                            Explorar Productos
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </span>
-                    </a>
-                </div>
-            </div>
-        </section>
+  <section class="home-section ecosystem-section" data-reveal-section>
+    <div class="container split-heading"><div><p class="eyebrow">Ecosistema Hesed Core</p><h2>Un núcleo compartido. Productos con identidad propia.</h2></div><div><p>Hesed Core Platform concentra capacidades fundamentales mientras cada producto conserva su propósito, experiencia e identidad.</p><a class="text-link" href="/plataforma">Explorar la plataforma <span>↗</span></a></div></div>
+    <div class="container ecosystem-summary"><div class="summary-core"><img src="/brand/hesed-core-isotipo.png" alt="" width="52" height="52" /><strong>Hesed Core Platform</strong><small>Núcleo del ecosistema</small></div><div class="summary-product"><small>Producto</small><strong>Business / TrimmOS</strong><span>Operación de negocios</span></div><div class="summary-product"><small>Producto</small><strong>Hesed Customer Platform</strong><span>Experiencia del cliente</span></div><div class="summary-capabilities"><small>Capacidades compartidas</small><span>Identidad</span><span>Seguridad</span><span>Datos</span><span>Almacenamiento</span></div></div>
+  </section>
 
-        <!-- AGENDA DE CORE: visible solo bajo demanda -->
-        <dialog id="agenda" class="m-auto w-[calc(100%-2rem)] max-w-6xl rounded-3xl bg-slate-50 p-0 text-gray-900 shadow-2xl backdrop:bg-slate-950/70">
-            <div class="max-h-[90vh] overflow-y-auto px-5 py-7 sm:px-8 lg:px-10 lg:py-9">
-                <div class="mb-8 flex items-start justify-between gap-5">
-                    <div class="max-w-3xl">
-                        <p class="mb-3 text-sm font-bold uppercase tracking-[0.18em] text-blue-700">Agenda de Core · Septiembre a noviembre 2026</p>
-                        <h2 class="mb-4 text-3xl font-black leading-tight sm:text-4xl">Fechas para aprender y compartir</h2>
-                        <p class="text-lg leading-relaxed text-gray-700">Seleccionamos las fechas públicas que pueden aportar algo a nuestra comunidad. Lo próximo aparece primero.</p>
-                    </div>
-                    <button id="agenda-close" type="button" class="rounded-xl border border-gray-300 bg-white p-3 text-gray-600 transition hover:border-gray-500 hover:text-gray-900" aria-label="Cerrar agenda">
-                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 6l12 12M18 6L6 18"/></svg>
-                    </button>
-                </div>
-                <div class="mb-5 text-sm font-semibold text-gray-600" aria-live="polite"><span id="agenda-status">Página 1 de 2</span></div>
-                <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
-                    <article data-agenda-page="1" class="rounded-2xl border border-blue-200 bg-white p-6 shadow-sm"><div class="mb-5 flex items-start justify-between gap-4"><span class="rounded-full bg-blue-50 px-3 py-1 text-sm font-bold text-blue-700">13 SEP</span><svg class="h-7 w-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="M16 3v4M8 3v4m-5 4h18M5 5h14a2 2 0 012 2v12a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z"/></svg></div><p class="mb-2 text-sm font-semibold uppercase tracking-wide text-gray-500">Tecnología</p><h3 class="mb-2 text-2xl font-bold">Día del Programador</h3><p class="text-gray-700">Reconocemos a quienes convierten problemas en soluciones y construyen tecnología con propósito.</p></article>
-                    <article data-agenda-page="1" class="rounded-2xl border border-green-200 bg-white p-6 shadow-sm"><div class="mb-5 flex items-start justify-between gap-4"><span class="rounded-full bg-green-50 px-3 py-1 text-sm font-bold text-green-700">15–16 SEP</span><svg class="h-7 w-7 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="M12 3v18M3 8h18M3 16h18M5 5l14 14M19 5L5 19"/></svg></div><p class="mb-2 text-sm font-semibold uppercase tracking-wide text-gray-500">Identidad de México</p><h3 class="mb-2 text-2xl font-bold">Mes patrio e Independencia</h3><p class="text-gray-700">Orgullo por construir tecnología desde México, con respeto, pluralidad y comunidad.</p></article>
-                    <article data-agenda-page="1" class="rounded-2xl border border-green-200 bg-white p-6 shadow-sm"><div class="mb-5 flex items-start justify-between gap-4"><span class="rounded-full bg-green-50 px-3 py-1 text-sm font-bold text-green-700">TODO OCT</span><svg class="h-7 w-7 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="M12 3a9 9 0 100 18 9 9 0 000-18zm0 4v5l3 2"/></svg></div><p class="mb-2 text-sm font-semibold uppercase tracking-wide text-gray-500">Seguridad familiar</p><h3 class="mb-2 text-2xl font-bold">Mes de la ciberseguridad</h3><p class="mb-4 text-gray-700">Guías para niñas, niños, adolescentes y personas cuidadoras.</p><a href="/guias/guia-familiar-ciberseguridad.html" class="font-bold text-green-700 hover:text-green-900">Consultar las guías <span aria-hidden="true">→</span></a></article>
-                    <article data-agenda-page="1" class="rounded-2xl border border-blue-200 bg-white p-6 shadow-sm"><div class="mb-5 flex items-start justify-between gap-4"><span class="rounded-full bg-blue-50 px-3 py-1 text-sm font-bold text-blue-700">14 OCT</span><svg class="h-7 w-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="M4 19h16M6 17V5h12v12M9 9h6M9 13h4"/></svg></div><p class="mb-2 text-sm font-semibold uppercase tracking-wide text-gray-500">Ingeniería</p><h3 class="mb-2 text-2xl font-bold">Día Mundial de la Normalización</h3><p class="text-gray-700">Una mirada sencilla a estándares, interoperabilidad y calidad de software.</p></article>
-                    <article data-agenda-page="2" class="hidden rounded-2xl border border-orange-200 bg-white p-6 shadow-sm"><span class="rounded-full bg-orange-50 px-3 py-1 text-sm font-bold text-orange-700">1–2 NOV</span><p class="mt-5 mb-2 text-sm font-semibold uppercase tracking-wide text-gray-500">Cultura de México</p><h3 class="mb-2 text-2xl font-bold">Día de Muertos</h3><p class="text-gray-700">Una pieza respetuosa sobre memoria, identidad y comunidad.</p></article>
-                    <article data-agenda-page="2" class="hidden rounded-2xl border border-blue-200 bg-white p-6 shadow-sm"><span class="rounded-full bg-blue-50 px-3 py-1 text-sm font-bold text-blue-700">12 NOV</span><p class="mt-5 mb-2 text-sm font-semibold uppercase tracking-wide text-gray-500">Tecnología</p><h3 class="mb-2 text-2xl font-bold">Día Mundial de la Usabilidad</h3><p class="text-gray-700">Consejos para crear experiencias digitales útiles, claras y accesibles.</p></article>
-                    <article data-agenda-page="2" class="hidden rounded-2xl border border-green-200 bg-white p-6 shadow-sm"><span class="rounded-full bg-green-50 px-3 py-1 text-sm font-bold text-green-700">20 NOV</span><p class="mt-5 mb-2 text-sm font-semibold uppercase tracking-wide text-gray-500">Identidad de México</p><h3 class="mb-2 text-2xl font-bold">Revolución Mexicana</h3><p class="text-gray-700">Un mensaje histórico breve e institucional sobre transformación y comunidad.</p></article>
-                    <article data-agenda-page="2" class="hidden rounded-2xl border border-green-200 bg-white p-6 shadow-sm"><span class="rounded-full bg-green-50 px-3 py-1 text-sm font-bold text-green-700">30 NOV</span><p class="mt-5 mb-2 text-sm font-semibold uppercase tracking-wide text-gray-500">Seguridad</p><h3 class="mb-2 text-2xl font-bold">Día de la Seguridad Informática</h3><p class="text-gray-700">Cerramos el ciclo con hábitos, aprendizajes y compromisos.</p></article>
-                </div>
-                <div class="mt-8 flex items-center justify-center gap-3"><button id="agenda-prev" type="button" class="rounded-xl border border-gray-300 bg-white px-4 py-2 font-bold text-gray-700 disabled:cursor-not-allowed disabled:opacity-40" disabled>Anterior</button><button id="agenda-next" type="button" class="rounded-xl bg-blue-600 px-4 py-2 font-bold text-white hover:bg-blue-700">Siguiente</button></div>
-            </div>
-        </dialog>
+  <section class="home-section product-feature" data-reveal-section><div class="container product-feature-grid"><div><p class="eyebrow">Producto destacado</p><h2>TrimmOS</h2><p>Una plataforma operativa para barberías y negocios de belleza que integra agenda, clientes, servicios, personal y administración en una experiencia conectada.</p><a class="button button-primary" href="https://trimmos.com" target="_blank" rel="noopener noreferrer">Conocer TrimmOS</a><a class="text-link" href="/productos">Ver productos <span>↗</span></a></div><div class="product-art"><div class="product-art-glow" aria-hidden="true"></div><img src="/logo.png" alt="Logo de TrimmOS" width="180" height="180" /><span>Próximo lanzamiento</span></div></div></section>
 
-        <!-- CAMPAÑA COMUNITARIA ACTIVA -->
-        <section id="comunidad" class="relative overflow-hidden bg-slate-950 px-4 py-20 text-white sm:px-6 lg:px-8 lg:py-24">
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_85%_20%,rgba(37,99,235,0.28),transparent_34%),linear-gradient(105deg,rgba(16,185,129,0.14),transparent_42%,rgba(239,68,68,0.1))]" aria-hidden="true"></div>
-            <div class="relative z-10 mx-auto max-w-6xl">
-                <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-                    <div>
-                        <p class="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-green-300">Septiembre · Orgullosamente construimos desde México</p>
-                        <h2 class="mb-5 text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">Tecnología con identidad y propósito</h2>
-                        <p class="mb-8 text-lg leading-relaxed text-blue-100 sm:text-xl">Este mes reconocemos el talento, la creatividad y la responsabilidad de quienes convierten problemas en soluciones desde México.</p>
-                        <div class="mb-7 flex items-start gap-4 rounded-2xl border border-white/15 bg-white/10 p-5">
-                            <svg class="mt-1 h-7 w-7 flex-shrink-0 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="M8 3v4m8-4v4M5 9h14M6 5h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V7a2 2 0 012-2zm3 6h6m-6 4h4"/></svg>
-                            <div><p class="mb-1 text-sm font-bold uppercase tracking-[0.14em] text-green-300">Primera actividad · 13 de septiembre</p><h3 class="mb-2 text-2xl font-black text-white">Día del Programador</h3><p class="text-blue-100">Una pausa para reconocer a quienes imaginan, diseñan y construyen soluciones que hacen avanzar a sus comunidades.</p></div>
-                        </div>
-                    </div>
-                    <div class="overflow-hidden rounded-3xl border border-white/20 bg-white/10 shadow-2xl">
-                        <img src="/Dia-del-programador.jpg" alt="Core celebra el Día del Programador el 13 de septiembre" class="h-full w-full object-cover" loading="eager" />
-                    </div>
-                </div>
-                <div class="mt-7 flex justify-center lg:justify-end">
-                    <button type="button" data-agenda-open class="inline-flex items-center gap-2 rounded-xl bg-green-400 px-5 py-3 font-bold text-slate-950 transition hover:bg-green-300">Ver agenda <span aria-hidden="true">→</span></button>
-                </div>
-            </div>
-        </section>
+  <section class="home-section security-feature" data-reveal-section><div class="container security-feature-grid"><div><p class="eyebrow">Security by Culture</p><h2>La seguridad no es una etapa. Es parte de nuestra cultura.</h2><p>Integramos identidad, control de acceso, protección de datos y trazabilidad desde las primeras decisiones de arquitectura.</p><a class="button button-dark" href="/seguridad">Conocer nuestra visión de seguridad</a></div><div class="statement-list"><span>Identidad y acceso</span><span>Protección de información</span><span>Responsabilidad operativa</span></div></div></section>
 
-        <!-- NUESTRA VISIÓN -->
-        <section id="vision" class="py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-white">
-            <div class="max-w-6xl mx-auto">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-6">Nuestra Visión</h2>
-                    <p class="text-xl text-gray-700 max-w-3xl mx-auto">
-                        De construir una aplicación a construir una base de ingeniería y un ecosistema completo
-                    </p>
-                </div>
+  <section class="home-section contact-feature"><div class="container contact-feature-inner"><p class="eyebrow">Hablemos</p><h2>Conversemos sobre lo que necesitas construir.</h2><p>Cuéntanos el reto. Nosotros ayudamos a convertirlo en una solución clara, mantenible y preparada para evolucionar.</p><a class="button button-primary" href="/contacto">Hablar con Hesed Core</a></div></section>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="p-8 bg-gradient-to-br from-green-50 to-green-100/50 rounded-2xl border border-green-200">
-                        <div class="text-4xl mb-4">1️⃣</div>
-                        <h3 class="text-2xl font-bold mb-3">Idea</h3>
-                        <p class="text-gray-700">Identificamos la necesidad real de nuestros clientes</p>
-                    </div>
-                    <div class="p-8 bg-gradient-to-br from-blue-50 to-blue-100/50 rounded-2xl border border-blue-200">
-                        <div class="text-4xl mb-4">2️⃣</div>
-                        <h3 class="text-2xl font-bold mb-3">TrimmOS Monolítico</h3>
-                        <p class="text-gray-700">Primer producto que nos enseñó a construir para escalar</p>
-                    </div>
-                    <div class="p-8 bg-gradient-to-br from-orange-50 to-orange-100/50 rounded-2xl border border-orange-200">
-                        <div class="text-4xl mb-4">3️⃣</div>
-                        <h3 class="text-2xl font-bold mb-3">Aprendizaje</h3>
-                        <p class="text-gray-700">Reconocimos la necesidad de separar responsabilidades</p>
-                    </div>
-                </div>
+  <script>
+    document.documentElement.classList.add('js-ready');
+    const revealSections = [...document.querySelectorAll<HTMLElement>('[data-reveal-section]')];
+    const revealAll = () => revealSections.forEach((section) => section.classList.add('is-visible'));
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.16 });
+    revealSections.forEach((section) => revealObserver.observe(section));
+    window.setTimeout(revealAll, 1200);
 
-                <div class="mt-12 p-8 bg-gradient-to-r from-green-50/30 via-blue-50/30 to-orange-50/30 rounded-3xl border border-gray-200">
-                    <h3 class="text-3xl font-bold mb-6 text-center">Resultado de la Evolución</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="flex items-start gap-4">
-                            <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
-                            </svg>
-                            <div>
-                                <h4 class="font-bold text-lg mb-1">Hesed Core Platform</h4>
-                                <p class="text-gray-700">Núcleo tecnológico común con capacidades compartidas</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4">
-                            <svg class="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v2h8v-2zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-2a4 4 0 00-8 0v2h8z" />
-                            </svg>
-                            <div>
-                                <h4 class="font-bold text-lg mb-1">Productos Independientes</h4>
-                                <p class="text-gray-700">TrimmOS, FactuCore, E-ComerCore y futuros productos</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4">
-                            <svg class="w-6 h-6 text-orange-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M10.5 1.5H5.75A2.25 2.25 0 003.5 3.75v12.5A2.25 2.25 0 005.75 18.5h8.5a2.25 2.25 0 002.25-2.25V6.5m-11-5v5h5m-5-5L15.5 13.5" stroke="currentColor" stroke-width="1.5" fill="none" />
-                            </svg>
-                            <div>
-                                <h4 class="font-bold text-lg mb-1">Hesed Customer Platform</h4>
-                                <p class="text-gray-700">Experiencia central para clientes y usuarios finales</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4">
-                            <svg class="w-6 h-6 text-green-700 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                            </svg>
-                            <div>
-                                <h4 class="font-bold text-lg mb-1">Ecosistema Completo</h4>
-                                <p class="text-gray-700">Plataforma escalable y sostenible para el futuro</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+    const coreOrb = document.querySelector<HTMLElement>('[data-core-orb]');
+    const orbTargets = [...document.querySelectorAll<HTMLElement>('[data-orb-target]')];
+    const canParallax = window.matchMedia('(hover: hover) and (pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-        <!-- CORE - NUESTRO PROPÓSITO -->
-        <section id="core" class="py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-white">
-            <div class="max-w-6xl mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                    <div class="flex justify-center">
-                        <div class="w-full max-w-sm core-cloud">
-                            <img src="/Core.png" alt="Core - Mascota de Hesed Core flotando sobre una nube" loading="lazy" class="relative z-10 w-full h-auto drop-shadow-2xl" />
-                        </div>
-                    </div>
-                    <div>
-                        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-6">Conoce a <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-700">Core</span></h2>
-                        <p class="text-xl text-gray-700 mb-6 leading-relaxed">
-                            Core es la representación del propósito que impulsa cada decisión en Hesed Core. Es la chispa que transforma ideas complejas en soluciones simples, escalables y con impacto real.
-                        </p>
-                        
-                        <div class="space-y-4 mb-8">
-                            <div class="flex items-start gap-4">
-                                <svg class="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                </svg>
-                                <div>
-                                    <h3 class="font-bold text-lg text-gray-900">Propósito</h3>
-                                    <p class="text-gray-700">Guía cada línea de código y cada decisión arquitectónica</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-4">
-                                <svg class="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                </svg>
-                                <div>
-                                    <h3 class="font-bold text-lg text-gray-900">Ingeniería</h3>
-                                    <p class="text-gray-700">Soluciones técnicas robustas y escalables para el futuro</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-4">
-                                <svg class="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                </svg>
-                                <div>
-                                    <h3 class="font-bold text-lg text-gray-900">Innovación</h3>
-                                    <p class="text-gray-700">Constantemente explorando nuevas posibilidades y mejores caminos</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-4">
-                                <svg class="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                </svg>
-                                <div>
-                                    <h3 class="font-bold text-lg text-gray-900">Cercanía</h3>
-                                    <p class="text-gray-700">Conectados con nuestros clientes y sus necesidades reales</p>
-                                </div>
-                            </div>
-                        </div>
+    const resetOrb = () => {
+      if (coreOrb) {
+        coreOrb.style.setProperty('--orb-x', '0px');
+        coreOrb.style.setProperty('--orb-y', '0px');
+      }
+    };
 
-                        <p class="text-lg text-gray-700 italic border-l-4 border-blue-600 pl-4">
-                            "La chispa en el corazón de Hesed Core que transforma software en soluciones que importan"
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
+    if (coreOrb && canParallax) {
+      coreOrb.addEventListener('pointermove', (event) => {
+        const bounds = coreOrb.getBoundingClientRect();
+        const x = ((event.clientX - bounds.left) / bounds.width - 0.5) * 10;
+        const y = ((event.clientY - bounds.top) / bounds.height - 0.5) * 10;
+        coreOrb.style.setProperty('--orb-x', `${x.toFixed(2)}px`);
+        coreOrb.style.setProperty('--orb-y', `${y.toFixed(2)}px`);
+      });
+      coreOrb.addEventListener('pointerleave', resetOrb);
+    }
 
-        <!-- HESED CORE PLATFORM -->
-        <section id="platform" class="py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-gray-50">
-            <div class="max-w-6xl mx-auto">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-6">Hesed Core Platform</h2>
-                    <p class="text-xl text-gray-700 max-w-3xl mx-auto">
-                        El núcleo tecnológico común que potencia nuestro ecosistema
-                    </p>
-                </div>
-
-                <div class="flex justify-center mb-10">
-                    <div class="w-full max-w-3xl platform-visual rounded-3xl border border-gray-200 shadow-xl p-3">
-                        <img src="/hesed-core-plataform.png" alt="Hesed Core Platform" loading="lazy" class="w-full h-auto max-h-[420px] object-contain rounded-2xl mx-auto" />
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="p-8 bg-white rounded-2xl border border-gray-200 shadow-md hover-lift">
-                        <svg class="w-8 h-8 text-green-600 mb-4" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
-                        </svg>
-                        <h3 class="text-xl font-bold mb-3">Identity & Autenticación</h3>
-                        <p class="text-gray-700">Gestión centralizada de identidad y autenticación segura</p>
-                    </div>
-                    <div class="p-8 bg-white rounded-2xl border border-gray-200 shadow-md hover-lift">
-                        <svg class="w-8 h-8 text-blue-600 mb-4" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M3.289 10.002L9.646 2.56c.42-.348 1.132-.348 1.553 0l6.356 7.443m-8.9 3.486l5.35 6.28c.42.348 1.13.348 1.55 0l5.35-6.28" stroke="currentColor" stroke-width="1.5" fill="none" />
-                        </svg>
-                        <h3 class="text-xl font-bold mb-3">Autorización & MFA</h3>
-                        <p class="text-gray-700">Control granular de permisos y autenticación multifactor</p>
-                    </div>
-                    <div class="p-8 bg-white rounded-2xl border border-gray-200 shadow-md hover-lift">
-                        <svg class="w-8 h-8 text-orange-600 mb-4" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V15a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                        </svg>
-                        <h3 class="text-xl font-bold mb-3">Seguridad & Policies</h3>
-                        <p class="text-gray-700">Políticas automatizadas y controles de seguridad avanzados</p>
-                    </div>
-                    <div class="p-8 bg-white rounded-2xl border border-gray-200 shadow-md hover-lift">
-                        <svg class="w-8 h-8 text-green-700 mb-4" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
-                        </svg>
-                        <h3 class="text-xl font-bold mb-3">Observabilidad</h3>
-                        <p class="text-gray-700">Monitoreo completo y análisis en tiempo real</p>
-                    </div>
-                    <div class="p-8 bg-white rounded-2xl border border-gray-200 shadow-md hover-lift">
-                        <svg class="w-8 h-8 text-blue-700 mb-4" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v2h16V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a2 2 0 012-2h8a2 2 0 012 2v9a2 2 0 01-2 2H8a2 2 0 01-2-2V7z" clip-rule="evenodd" />
-                        </svg>
-                        <h3 class="text-xl font-bold mb-3">Auditoría</h3>
-                        <p class="text-gray-700">Trazabilidad completa y logs detallados de todas las acciones</p>
-                    </div>
-                    <div class="p-8 bg-white rounded-2xl border border-gray-200 shadow-md hover-lift">
-                        <svg class="w-8 h-8 text-orange-700 mb-4" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 17v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.381z" clip-rule="evenodd" />
-                        </svg>
-                        <h3 class="text-xl font-bold mb-3">Servicios Compartidos</h3>
-                        <p class="text-gray-700">APIs y servicios comunes para todos los productos</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- PRODUCTOS HESED CORE -->
-        <section id="productos" class="py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-white">
-            <div class="max-w-6xl mx-auto">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-6">Productos Hesed Core</h2>
-                    <p class="text-xl text-gray-700 max-w-3xl mx-auto">
-                        Soluciones independientes construidas sobre nuestra plataforma común
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <!-- TrimmOS -->
-                    <a href="https://www.trimmos.com/" target="_blank" rel="noopener noreferrer" class="group product-card bg-white border-2 border-green-300 rounded-3xl p-8 shadow-lg hover-lift hover:border-green-500 transition-all cursor-pointer block">
-                        <div class="flex items-center gap-4 mb-6">
-                            <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-md flex-shrink-0">
-                                <img src="/logo.png" alt="TrimmOS" class="w-14 h-14 object-contain" />
-                            </div>
-                            <div>
-                                <h3 class="text-3xl font-black text-gray-900">TrimmOS</h3>
-                                <p class="text-green-700 font-semibold text-sm uppercase">Sistema de Gestión</p>
-                            </div>
-                        </div>
-                        <p class="text-gray-700 mb-6 text-lg leading-relaxed">
-                            Gestión completa para barberías y salones. Agenda automática, personal, servicios, clientes y reportes inteligentes descargables en PDF/Excel.
-                        </p>
-                        <ul class="space-y-3 mb-8">
-                            <li class="flex items-center gap-3">
-                                <svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                                </svg>
-                                <span class="text-gray-700">Agenda automática con códigos QR</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                                </svg>
-                                <span class="text-gray-700">Gestión de clientes y empleados</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                                </svg>
-                                <span class="text-gray-700">Reportes detallados PDF/Excel</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                                </svg>
-                                <span class="text-gray-700">Personalización de marca</span>
-                            </li>
-                        </ul>
-                        <div class="text-center bg-gradient-to-r from-green-600 to-green-700 text-white px-6 py-3 rounded-xl font-bold hover:from-green-700 hover:to-green-800 transition-all group-hover:shadow-lg">
-                            Ver Demo →
-                        </div>
-                    </a>
-
-                    <!-- E-ComerCore -->
-                    <div class="product-card bg-white border-2 border-blue-300 rounded-3xl p-8 shadow-lg hover-lift hover:border-blue-500 transition-all">
-                        <div class="flex items-center gap-4 mb-6">
-                            <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-md flex-shrink-0 overflow-hidden p-2">
-                                <img src="/E-comercore.png" alt="E-ComerCore" loading="lazy" class="w-full h-full object-contain" />
-                            </div>
-                            <div>
-                                <h3 class="text-3xl font-black text-gray-900">E-ComerCore</h3>
-                                <p class="text-blue-700 font-semibold text-sm uppercase">Plataforma E-Commerce</p>
-                            </div>
-                        </div>
-                        <p class="text-gray-700 mb-6 text-lg leading-relaxed">
-                            Solución de comercio electrónico escalable para empresas mexicanas. Catálogo, carrito, pagos y gestión de inventario integrados.
-                        </p>
-                        <ul class="space-y-3 mb-8">
-                            <li class="flex items-center gap-3">
-                                <svg class="w-5 h-5 text-blue-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                                </svg>
-                                <span class="text-gray-700">Catálogo y gestión de productos</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="w-5 h-5 text-blue-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                                </svg>
-                                <span class="text-gray-700">Carrito de compras optimizado</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="w-5 h-5 text-blue-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                                </svg>
-                                <span class="text-gray-700">Integración de pagos seguros</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="w-5 h-5 text-blue-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                                </svg>
-                                <span class="text-gray-700">Control de inventario en tiempo real</span>
-                            </li>
-                        </ul>
-                        <a href="#contacto" class="block text-center bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-xl font-bold hover:from-blue-700 hover:to-blue-800 transition-all">
-                            Solicitar Demo →
-                        </a>
-                    </div>
-
-                    <!-- FactuCore -->
-                    <div class="product-card bg-white border-2 border-orange-300 rounded-3xl p-8 shadow-lg hover-lift hover:border-orange-500 transition-all">
-                        <div class="flex items-center gap-4 mb-6">
-                            <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-700 rounded-2xl flex items-center justify-center text-2xl shadow-md flex-shrink-0">
-                                <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h3 class="text-3xl font-black text-gray-900">FactuCore</h3>
-                                <p class="text-orange-700 font-semibold text-sm uppercase">Facturación Electrónica</p>
-                            </div>
-                        </div>
-                        <p class="text-gray-700 mb-6 text-lg leading-relaxed">
-                            Facturación electrónica simplificada. Emisión de comprobantes, control de impuestos y cumplimiento normativo SAT integrado.
-                        </p>
-                        <ul class="space-y-3 mb-8">
-                            <li class="flex items-center gap-3">
-                                <svg class="w-5 h-5 text-orange-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                                </svg>
-                                <span class="text-gray-700">Facturación electrónica SAT</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="w-5 h-5 text-orange-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                                </svg>
-                                <span class="text-gray-700">Control de impuestos automático</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="w-5 h-5 text-orange-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                                </svg>
-                                <span class="text-gray-700">Generación de reportes fiscales</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="w-5 h-5 text-orange-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                                </svg>
-                                <span class="text-gray-700">Historial de comprobantes</span>
-                            </li>
-                        </ul>
-                        <a href="#contacto" class="block text-center bg-gradient-to-r from-orange-600 to-orange-700 text-white px-6 py-3 rounded-xl font-bold hover:from-orange-700 hover:to-orange-800 transition-all">
-                            Solicitar Demo →
-                        </a>
-                    </div>
-
-                    <!-- Futuros Productos -->
-                    <div class="group bg-gradient-to-br from-gray-100 to-gray-50 border-2 border-dashed border-gray-300 rounded-3xl p-8 shadow-lg hover-lift hover:border-gray-400 transition-all flex flex-col items-center justify-center text-center">
-                        <svg class="w-16 h-16 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
-                        <h3 class="text-3xl font-black text-gray-900 mb-3">Futuros Productos</h3>
-                        <p class="text-gray-700 mb-6 text-lg">
-                            Expandiendo el ecosistema con nuevas soluciones específicas para cada industria
-                        </p>
-                        <p class="text-gray-500 italic">Más información próximamente</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- HESED CUSTOMER PLATFORM -->
-        <section id="customer-platform" class="py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-gray-50">
-            <div class="max-w-6xl mx-auto">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-6">Hesed Customer Platform</h2>
-                        <p class="text-xl text-gray-700 mb-8 leading-relaxed">
-                            Experiencia central e independiente para que clientes y usuarios finales conozcan, descubran y accedan al ecosistema de productos Hesed Core.
-                        </p>
-                        <ul class="space-y-4 mb-10">
-                            <li class="flex items-start gap-4">
-                                <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                                </svg>
-                                <div>
-                                    <h4 class="font-bold text-lg text-gray-900">Identity Separada</h4>
-                                    <p class="text-gray-700">Con su propia identidad y responsabilidad específica</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start gap-4">
-                                <svg class="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                                </svg>
-                                <div>
-                                    <h4 class="font-bold text-lg text-gray-900">Descubrimiento</h4>
-                                    <p class="text-gray-700">Explora todos los productos del ecosistema en un lugar</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start gap-4">
-                                <svg class="w-6 h-6 text-orange-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                                </svg>
-                                <div>
-                                    <h4 class="font-bold text-lg text-gray-900">Acceso Centralizado</h4>
-                                    <p class="text-gray-700">Gestiona tu relación con todos los productos desde una plataforma</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="bg-gradient-to-br from-green-50 to-blue-50 rounded-3xl p-6 border border-gray-200 shadow-lg">
-                        <div class="text-center">
-                            <div class="bg-white rounded-2xl border border-gray-200 shadow-md p-3 mb-6 inline-block w-full max-w-md">
-                                <img src="/hesed-customer-plataform.png" alt="Hesed Customer Platform" loading="lazy" class="w-full h-auto max-h-[280px] object-contain mx-auto" />
-                            </div>
-                            <h3 class="text-2xl font-bold mb-4 text-gray-900">Conectado con el Ecosistema</h3>
-                            <p class="text-gray-700 text-lg leading-relaxed">
-                                Hesed Customer Platform es el punto central donde convergen todos nuestros productos para ofrecerte una experiencia integrada y coherente.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SEGURIDAD DESDE EL DISEÑO -->
-        <section id="security" class="py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-white">
-            <div class="max-w-6xl mx-auto">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-6">Seguridad Desde el Diseño</h2>
-                    <p class="text-xl text-gray-700 max-w-3xl mx-auto">
-                        Principios fundamentales sin promesas absolutas
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="p-8 bg-gradient-to-br from-green-50 to-green-100/50 rounded-2xl border border-green-200">
-                        <div class="flex items-center gap-4 mb-4">
-                            <svg class="w-6 h-6 text-green-700" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
-                            </svg>
-                            <h3 class="text-2xl font-bold text-gray-900">Mínimo Privilegio</h3>
-                        </div>
-                        <p class="text-gray-700">Cada usuario y servicio accede únicamente a los recursos que necesita</p>
-                    </div>
-                    <div class="p-8 bg-gradient-to-br from-blue-50 to-blue-100/50 rounded-2xl border border-blue-200">
-                        <div class="flex items-center gap-4 mb-4">
-                            <svg class="w-6 h-6 text-blue-700" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M3.289 10.002L9.646 2.56c.42-.348 1.132-.348 1.553 0l6.356 7.443m-8.9 3.486l5.35 6.28c.42.348 1.13.348 1.55 0l5.35-6.28" stroke="currentColor" stroke-width="1.5" fill="none" />
-                            </svg>
-                            <h3 class="text-2xl font-bold text-gray-900">Identidad Separada</h3>
-                        </div>
-                        <p class="text-gray-700">Identidades independientes para cada contexto y aplicación</p>
-                    </div>
-                    <div class="p-8 bg-gradient-to-br from-orange-50 to-orange-100/50 rounded-2xl border border-orange-200">
-                        <div class="flex items-center gap-4 mb-4">
-                            <svg class="w-6 h-6 text-orange-700" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z" clip-rule="evenodd" />
-                            </svg>
-                            <h3 class="text-2xl font-bold text-gray-900">Tokens y Sesiones Limitadas</h3>
-                        </div>
-                        <p class="text-gray-700">Expiración automática con rotación regular de credenciales</p>
-                    </div>
-                    <div class="p-8 bg-gradient-to-br from-green-50 to-green-100/50 rounded-2xl border border-green-200">
-                        <div class="flex items-center gap-4 mb-4">
-                            <svg class="w-6 h-6 text-green-700" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 17v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.381z" clip-rule="evenodd" />
-                            </svg>
-                            <h3 class="text-2xl font-bold text-gray-900">Backend como Autoridad</h3>
-                        </div>
-                        <p class="text-gray-700">El servidor valida todas las decisiones de seguridad</p>
-                    </div>
-                    <div class="p-8 bg-gradient-to-br from-blue-50 to-blue-100/50 rounded-2xl border border-blue-200">
-                        <div class="flex items-center gap-4 mb-4">
-                            <svg class="w-6 h-6 text-blue-700" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
-                            </svg>
-                            <h3 class="text-2xl font-bold text-gray-900">Policies Automatizadas</h3>
-                        </div>
-                        <p class="text-gray-700">Controles implementados programáticamente, no manualmente</p>
-                    </div>
-                    <div class="p-8 bg-gradient-to-br from-orange-50 to-orange-100/50 rounded-2xl border border-orange-200">
-                        <div class="flex items-center gap-4 mb-4">
-                            <svg class="w-6 h-6 text-orange-700" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v2h16V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a2 2 0 012-2h8a2 2 0 012 2v9a2 2 0 01-2 2H8a2 2 0 01-2-2V7z" clip-rule="evenodd" />
-                            </svg>
-                            <h3 class="text-2xl font-bold text-gray-900">Trazabilidad y Auditoría</h3>
-                        </div>
-                        <p class="text-gray-700">Registro completo de todas las acciones para cumplimiento normativo</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- EQUIPO DE FUNDADORES -->
-        <section id="equipo" class="py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-gray-50">
-            <div class="max-w-6xl mx-auto">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-6">Nuestro Equipo</h2>
-                    <p class="text-xl text-gray-700 max-w-3xl mx-auto">
-                        Profesionales apasionados por la tecnología y el emprendimiento
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Miembro 1 -->
-                    <div class="group bg-white p-8 rounded-3xl border border-gray-200 shadow-lg hover-lift transition-all text-center hover:border-green-300">
-                        <div class="relative mb-8">
-                            <div class="w-28 h-28 bg-gradient-to-br from-green-500 to-green-700 rounded-3xl mx-auto flex items-center justify-center text-4xl text-white font-black shadow-lg transform group-hover:scale-110 transition-transform duration-300">
-                                LM
-                            </div>
-                            <div class="absolute -top-2 -right-2 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-sm font-bold shadow-lg">
-                                ⭐
-                            </div>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Leonardo Teófilo Martínez</h3>
-                        <p class="text-green-700 font-semibold text-sm uppercase mb-4">CEO & Co-Founder</p>
-                        <p class="text-gray-700">Director General y Co-Fundador. Lidera la visión estratégica y la ejecución de soluciones tecnológicas para clientes empresariales.</p>
-                    </div>
-
-                    <!-- Miembro 2 -->
-                    <div class="group bg-white p-8 rounded-3xl border border-gray-200 shadow-lg hover-lift transition-all text-center hover:border-blue-300">
-                        <div class="relative mb-8">
-                            <div class="w-28 h-28 bg-gradient-to-br from-blue-500 to-blue-700 rounded-3xl mx-auto flex items-center justify-center text-4xl text-white font-black shadow-lg transform group-hover:scale-110 transition-transform duration-300">
-                                FG
-                            </div>
-                            <div class="absolute -top-2 -right-2 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm font-bold shadow-lg">
-                                🎯
-                            </div>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Flor Guadalupe Rodríguez Martínez</h3>
-                        <p class="text-blue-700 font-semibold text-sm uppercase mb-4">CPO & Co-Founder</p>
-                        <p class="text-gray-700">Directora de Producto y Co-Fundadora. Diseña productos digitales que conectan con el cliente y generan valor de negocio sostenible.</p>
-                    </div>
-
-                    <!-- Miembro 3 -->
-                    <div class="group bg-white p-8 rounded-3xl border border-gray-200 shadow-lg hover-lift transition-all text-center hover:border-orange-300">
-                        <div class="relative mb-8">
-                            <div class="w-28 h-28 bg-gradient-to-br from-orange-500 to-orange-700 rounded-3xl mx-auto flex items-center justify-center text-4xl text-white font-black shadow-lg transform group-hover:scale-110 transition-transform duration-300">
-                                GC
-                            </div>
-                            <div class="absolute -top-2 -right-2 w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white text-sm font-bold shadow-lg">
-                                🚀
-                            </div>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Guillermo Antonio Camarillo Viera</h3>
-                        <p class="text-orange-700 font-semibold text-sm uppercase mb-4">COO / CMO & Co-Founder</p>
-                        <p class="text-gray-700">Director de Operaciones / Marketing y Co-Fundador. Coordina la ejecución operativa y la estrategia de posicionamiento de marca.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- INGENIERÍA -->
-        <section id="engineering" class="py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-white">
-            <div class="max-w-6xl mx-auto">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-6">Nuestra Metodología</h2>
-                    <p class="text-xl text-gray-700 max-w-3xl mx-auto">
-                        El proceso que guía la construcción de cada solución
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                    <div class="relative">
-                        <div class="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-green-600 to-green-700 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">1</div>
-                        <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-md pt-12">
-                            <h3 class="text-2xl font-bold mb-3 text-gray-900">Comprender</h3>
-                            <p class="text-gray-700">Análisis profundo de necesidades y contexto del cliente</p>
-                        </div>
-                    </div>
-                    <div class="relative">
-                        <div class="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">2</div>
-                        <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-md pt-12">
-                            <h3 class="text-2xl font-bold mb-3 text-gray-900">Diseñar</h3>
-                            <p class="text-gray-700">Arquitectura y diseño escalable, seguro y mantenible</p>
-                        </div>
-                    </div>
-                    <div class="relative">
-                        <div class="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-orange-600 to-orange-700 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">3</div>
-                        <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-md pt-12">
-                            <h3 class="text-2xl font-bold mb-3 text-gray-900">Construir</h3>
-                            <p class="text-gray-700">Implementación robusta con calidad y documentación</p>
-                        </div>
-                    </div>
-                    <div class="relative">
-                        <div class="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-green-600 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">4</div>
-                        <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-md pt-12">
-                            <h3 class="text-2xl font-bold mb-3 text-gray-900">Evolucionar</h3>
-                            <p class="text-gray-700">Mejora continua basada en datos y retroalimentación</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mt-16 bg-gradient-to-r from-green-50/50 via-blue-50/50 to-orange-50/50 rounded-3xl p-12 border border-gray-200">
-                    <h3 class="text-2xl font-bold mb-6 text-center text-gray-900">Nuestra Cultura de Ingeniería</h3>
-                    <p class="text-xl text-gray-700 text-center max-w-3xl mx-auto leading-relaxed">
-                        Creemos en la excelencia técnica, la responsabilidad y el impacto real. Cada decisión arquitectónica se toma considerando escalabilidad, seguridad y sostenibilidad a largo plazo.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- CONTACTO -->
-        <section id="contacto" class="py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-gray-50">
-            <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-6">Inicia una Conversación</h2>
-                <p class="text-xl text-gray-700 mb-12 leading-relaxed">
-                    Conecta con nuestro equipo y descubre cómo Hesed Core puede transformar tu negocio
-                </p>
-
-                <div class="bg-gradient-to-br from-green-50 to-blue-50 rounded-3xl p-12 border border-gray-200 shadow-lg mb-12">
-                    <p class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 break-words">contacto@hesedcore.com</p>
-                    <p class="text-lg text-gray-700 mb-8">
-                        Responderemos a tu consulta dentro de 24 horas hábiles
-                    </p>
-                    <a href="mailto:contacto@hesedcore.com" class="inline-flex items-center gap-2 bg-gradient-to-r from-green-600 to-blue-700 text-white px-10 py-4 rounded-2xl font-bold text-lg hover:from-green-700 hover:to-blue-800 transition-all shadow-lg hover:shadow-xl">
-                        Enviar Correo
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                        </svg>
-                    </a>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="text-center">
-                        <svg class="w-8 h-8 text-green-600 mx-auto mb-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
-                        </svg>
-                        <h3 class="font-bold text-lg text-gray-900 mb-2">Ubicación</h3>
-                        <p class="text-gray-700">García, Nuevo León, México</p>
-                    </div>
-                    <div class="text-center">
-                        <svg class="w-8 h-8 text-blue-600 mx-auto mb-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v2h8v-2zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-2a4 4 0 00-8 0v2h8z" />
-                        </svg>
-                        <h3 class="font-bold text-lg text-gray-900 mb-2">Colaboración</h3>
-                        <p class="text-gray-700">Abiertos a propuestas y alianzas estratégicas</p>
-                    </div>
-                    <div class="text-center">
-                        <svg class="w-8 h-8 text-orange-600 mx-auto mb-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 17v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.381z" />
-                        </svg>
-                        <h3 class="font-bold text-lg text-gray-900 mb-2">Visión</h3>
-                        <p class="text-gray-700">Construyendo el futuro digital juntos</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FOOTER -->
-        <footer class="bg-gradient-to-r from-gray-900 to-gray-800 text-white py-12 px-4 sm:px-6 lg:px-8">
-            <div class="max-w-6xl mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12 pb-12 border-b border-gray-700">
-                    <div>
-                        <h3 class="text-xl font-bold mb-4">Hesed Core</h3>
-                        <p class="text-gray-300">Ingeniería de Software con Propósito</p>
-                    </div>
-                    <div>
-                        <h4 class="font-bold mb-4">Productos</h4>
-                        <ul class="space-y-2 text-gray-300">
-                            <li><a href="#platform" class="hover:text-white transition">Core Platform</a></li>
-                            <li><a href="#productos" class="hover:text-white transition">TrimmOS</a></li>
-                            <li><a href="#productos" class="hover:text-white transition">E-ComerCore</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-bold mb-4">Empresa</h4>
-                        <ul class="space-y-2 text-gray-300">
-                            <li><a href="#vision" class="hover:text-white transition">Visión</a></li>
-                            <li><a href="#equipo" class="hover:text-white transition">Equipo</a></li>
-                            <li><a href="#engineering" class="hover:text-white transition">Metodología</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-bold mb-4">Contacto</h4>
-                        <ul class="space-y-2 text-gray-300">
-                            <li>contacto@hesedcore.com</li>
-                            <li>García, Nuevo León</li>
-                            <li class="text-sm">Lun-Vie: 8:00-18:00</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="text-center text-gray-400">
-                    <p>&copy; 2026 Hesed Core. Todos los derechos reservados. García, Nuevo León, México</p>
-                </div>
-            </div>
-        </footer>
-
-        <script>
-            const agendaDialog = document.getElementById('agenda') as HTMLDialogElement | null;
-            const agendaOpenButtons = document.querySelectorAll<HTMLButtonElement>('[data-agenda-open]');
-            const agendaClose = document.getElementById('agenda-close');
-            const agendaItems = document.querySelectorAll<HTMLElement>('[data-agenda-page]');
-            const agendaStatus = document.getElementById('agenda-status');
-            const agendaPrevious = document.getElementById('agenda-prev') as HTMLButtonElement | null;
-            const agendaNext = document.getElementById('agenda-next') as HTMLButtonElement | null;
-            let agendaPage = 1;
-
-            agendaOpenButtons.forEach(button => {
-                button.addEventListener('click', () => agendaDialog?.showModal());
-            });
-
-            agendaClose?.addEventListener('click', () => agendaDialog?.close());
-            agendaDialog?.addEventListener('click', event => {
-                if (event.target === agendaDialog) agendaDialog.close();
-            });
-
-            function updateAgenda() {
-                agendaItems.forEach(item => {
-                    item.classList.toggle('hidden', item.dataset.agendaPage !== String(agendaPage));
-                });
-                if (agendaStatus) agendaStatus.textContent = `Página ${agendaPage} de 2`;
-                if (agendaPrevious) agendaPrevious.disabled = agendaPage === 1;
-                if (agendaNext) agendaNext.disabled = agendaPage === 2;
-            }
-
-            agendaPrevious?.addEventListener('click', () => {
-                agendaPage = Math.max(1, agendaPage - 1);
-                updateAgenda();
-            });
-
-            agendaNext?.addEventListener('click', () => {
-                agendaPage = Math.min(2, agendaPage + 1);
-                updateAgenda();
-            });
-
-            // Scroll Animations - Esperar a que el DOM esté completamente listo
-            document.addEventListener('DOMContentLoaded', function() {
-                const observerOptions = {
-                    threshold: 0.1,
-                    rootMargin: '0px 0px -50px 0px'
-                };
-
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('active');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, observerOptions);
-
-                // Apply animations to sections
-                const sections = document.querySelectorAll('section');
-                sections.forEach(section => {
-                    section.classList.add('fade-in');
-                    observer.observe(section);
-                });
-
-                // Apply animations to specific card elements
-                const cards = document.querySelectorAll('.product-card, .founder-card, .team-member');
-                cards.forEach((card, index) => {
-                    card.classList.add('slide-up');
-                    card.classList.add(`stagger-${(index % 4) + 1}`);
-                    observer.observe(card);
-                });
-            });
-        </script>
-    </body>
-</html>
+    orbTargets.forEach((target) => {
+      const targetName = target.dataset.orbTarget;
+      if (!targetName || targetName === 'core') return;
+      const related = orbTargets.filter((item) => item.dataset.orbTarget === targetName || item.dataset.orbTarget === 'core');
+      const activate = () => {
+        orbTargets.forEach((item) => item.classList.toggle('is-dimmed', !related.includes(item)));
+        related.forEach((item) => item.classList.add('is-active'));
+      };
+      const clear = () => orbTargets.forEach((item) => item.classList.remove('is-dimmed', 'is-active'));
+      target.addEventListener('pointerenter', activate);
+      target.addEventListener('focus', activate);
+      target.addEventListener('pointerleave', clear);
+      target.addEventListener('blur', clear);
+    });
+  </script>
+</BaseLayout>

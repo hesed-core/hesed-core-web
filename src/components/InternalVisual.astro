@@ -1,0 +1,20 @@
+---
+import MediaFrame from './MediaFrame.astro';
+interface Props { variant: 'architecture' | 'product' | 'engineering' | 'security' | 'manifesto'; }
+const { variant } = Astro.props;
+---
+{variant === 'architecture' && <MediaFrame variant="architecture" label="CORE PLATFORM" caption="Capacidades compartidas, responsabilidades claras.">
+  <div class="architecture-visual"><div class="architecture-core"><img src="/brand/hesed-core-isotipo.png" alt="" width="64" height="64" /><strong>Hesed Core<br />Platform</strong></div><span class="architecture-node node-identity">Identidad</span><span class="architecture-node node-security">Seguridad</span><span class="architecture-node node-data">Datos</span><span class="architecture-node node-storage">Almacenamiento</span><i class="architecture-line line-a"></i><i class="architecture-line line-b"></i><i class="architecture-line line-c"></i><i class="architecture-line line-d"></i></div>
+</MediaFrame>}
+{variant === 'product' && <MediaFrame variant="product" accent="violet" label="TRIMMOS / PRÓXIMO LANZAMIENTO">
+  <div class="product-visual"><div class="product-layer layer-one"></div><div class="product-layer layer-two"></div><img src="/logo.png" alt="Logo de TrimmOS" width="160" height="160" /><span class="product-visual-note">Agenda · Servicios · Operación</span></div>
+</MediaFrame>}
+{variant === 'engineering' && <MediaFrame variant="interface" label="DECISIONES DE INGENIERÍA">
+  <div class="engineering-visual"><div class="engineering-layer is-highlighted"><span>01</span><strong>Experiencia</strong><small>lo que las personas usan</small></div><div class="engineering-layer"><span>02</span><strong>Producto</strong><small>lo que el negocio necesita</small></div><div class="engineering-layer"><span>03</span><strong>Servicios</strong><small>lo que conecta capacidades</small></div><div class="engineering-layer"><span>04</span><strong>Datos</strong><small>lo que sostiene decisiones</small></div><div class="engineering-layer"><span>05</span><strong>Infraestructura</strong><small>lo que permite operar</small></div></div>
+</MediaFrame>}
+{variant === 'security' && <MediaFrame variant="architecture" label="SECURITY BY CULTURE">
+  <div class="security-visual"><div class="security-ring ring-outer"></div><div class="security-ring ring-middle"></div><div class="security-ring ring-inner"><span>Identidad</span></div><span class="security-check check-one">MFA</span><span class="security-check check-two">Sesiones</span><span class="security-check check-three">Datos</span><span class="security-check check-four">Trazabilidad</span></div>
+</MediaFrame>}
+{variant === 'manifesto' && <MediaFrame variant="editorial" accent="coral" label="Hesed Core / MÉXICO">
+  <div class="manifesto-visual"><span>Construir</span><span>con</span><strong>propósito.</strong><i></i><small>García, Nuevo León</small></div>
+</MediaFrame>}

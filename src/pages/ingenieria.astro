@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+import InternalPageHero from '../components/InternalPageHero.astro';
+import InternalVisual from '../components/InternalVisual.astro';
+const decisions = [
+  ['Arquitectura por dominios', 'Separamos responsabilidades para que cada contexto pueda crecer con límites claros.'],
+  ['Identidades separadas', 'Cada producto y servicio conserva un alcance de acceso comprensible y controlable.'],
+  ['Servicios compartidos', 'Las capacidades comunes se construyen una vez y se mantienen con coherencia.'],
+  ['Evolución, pruebas y documentación', 'Las decisiones quedan visibles para poder aprender, revisar y mejorar.']
+];
+---
+<BaseLayout title="Ingeniería | Hesed Core" description="La forma en que Hesed Core construye plataformas y productos digitales." path="/ingenieria">
+  <InternalPageHero eyebrow="Ingeniería" title="Ingeniería guiada por decisiones, no por tendencias." description="Seleccionamos tecnologías y patrones según las necesidades de cada producto. Buscamos claridad, mantenibilidad, seguridad y capacidad de evolución." variant="engineering"><InternalVisual variant="engineering" /></InternalPageHero>
+  <section class="content-section"><div class="container"><div class="decision-list">{decisions.map((item, index) => <article><span>0{index + 1}</span><div><h2>{item[0]}</h2><p>{item[1]}</p></div></article>)}</div></div></section>
+  <section id="tecnologia" class="content-section dark-content"><div class="container"><p class="eyebrow">Arquitectura y tecnología</p><h2>Herramientas elegidas por el problema que ayudan a resolver.</h2><div class="technology-list"><span>React y TypeScript para plataformas web</span><span>Flutter para experiencias multiplataforma</span><span>Python y FastAPI para servicios backend</span><span>PostgreSQL y Redis para persistencia y operación</span><span>MinIO para almacenamiento de objetos</span><span>Docker para entornos reproducibles</span></div></div></section>
+</BaseLayout>

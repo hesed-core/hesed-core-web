@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+import InternalPageHero from '../components/InternalPageHero.astro';
+import InternalVisual from '../components/InternalVisual.astro';
+---
+<BaseLayout title="Productos | Hesed Core" description="TrimmOS y la visión futura de productos digitales de Hesed Core." path="/productos">
+  <InternalPageHero eyebrow="Productos" title="Productos con propósito, identidad y espacio para evolucionar." description="Construimos experiencias independientes sobre fundamentos tecnológicos mantenibles." variant="products" accent="violet"><InternalVisual variant="product" /></InternalPageHero>
+  <section class="product-detail"><div class="container product-detail-grid"><div><p class="eyebrow">Producto principal / Próximo lanzamiento</p><h2>TrimmOS</h2><p>Plataforma operativa para barberías y negocios de belleza, diseñada para centralizar agenda, servicios, clientes, personal y administración.</p><a class="button button-primary" href="https://trimmos.com" target="_blank" rel="noopener noreferrer">Visitar TrimmOS</a></div><div class="product-facts"><span>Agenda</span><span>Servicios</span><span>Clientes</span><span>Personal</span></div></div></section>
+  <section id="vision" class="content-section"><div class="container"><p class="eyebrow">Visión de producto</p><h2>Iniciativas futuras, comunicadas con honestidad.</h2><div class="vision-list"><article><span>01</span><h3>Plataforma de Rentas</h3><strong>En conceptualización</strong><p>Una futura experiencia digital orientada a simplificar la administración y relación alrededor de la renta de viviendas.</p></article><article><span>02</span><h3>E-ComerCore</h3><strong>En visión</strong><p>Una futura solución de comercio digital concebida para integrar operación, catálogo y experiencia comercial sobre fundamentos mantenibles.</p></article></div></div></section>
+</BaseLayout>

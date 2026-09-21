@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+import InternalPageHero from '../components/InternalPageHero.astro';
+import InternalVisual from '../components/InternalVisual.astro';
+---
+<BaseLayout title="Empresa | Hesed Core" description="El propósito y la cultura de Hesed Core, empresa mexicana de ingeniería de software." path="/empresa">
+  <InternalPageHero eyebrow="Empresa" title="Ingeniería de software con propósito." description="Hesed Core nace de la decisión de construir tecnología con fundamentos claros: arquitectura mantenible, seguridad desde el origen y responsabilidad sobre lo que ponemos en operación." variant="company" accent="coral"><InternalVisual variant="manifesto" /></InternalPageHero>
+  <section class="content-section"><div class="container manifesto-grid"><article><p class="eyebrow">Propósito</p><h2>Construir tecnología que merezca confianza.</h2><p>Trabajamos cerca de clientes y usuarios para convertir necesidades reales en soluciones claras, mantenibles y preparadas para evolucionar.</p></article><article><p class="eyebrow">Cultura</p><h2>Cercanía, responsabilidad y evolución continua.</h2><p>Security by Culture expresa una forma de trabajar: aprender, documentar decisiones y cuidar el impacto de lo que construimos.</p></article></div></section>
+  <section class="content-section dark-content"><div class="container location-block"><p class="eyebrow">Desde México</p><h2>García, Nuevo León, México.</h2><p>Una empresa de ingeniería cercana a las personas y a los problemas que la tecnología puede ayudar a resolver.</p></div></section>
+</BaseLayout>
