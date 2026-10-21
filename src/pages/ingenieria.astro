@@ -1,16 +1,93 @@
 ---
-import BaseLayout from '../components/BaseLayout.astro';
-import InternalPageHero from '../components/InternalPageHero.astro';
-import InternalVisual from '../components/InternalVisual.astro';
-const decisions = [
-  ['Arquitectura por dominios', 'Separamos responsabilidades para que cada contexto pueda crecer con límites claros.'],
-  ['Identidades separadas', 'Cada producto y servicio conserva un alcance de acceso comprensible y controlable.'],
-  ['Servicios compartidos', 'Las capacidades comunes se construyen una vez y se mantienen con coherencia.'],
-  ['Evolución, pruebas y documentación', 'Las decisiones quedan visibles para poder aprender, revisar y mejorar.']
+import CorporateInternalLayoutV2 from '../layouts/CorporateInternalLayoutV2.astro';
+import InternalHeroV2 from '../components/v2/InternalHeroV2.astro';
+import EditorialCtaV2 from '../components/v2/EditorialCtaV2.astro';
+
+const method = [
+  ['01', 'Comprender', 'Escuchamos a las personas y definimos con claridad el problema que vale la pena resolver.'],
+  ['02', 'Diseñar', 'Tomamos decisiones de producto y arquitectura con intención, contexto y responsabilidad.'],
+  ['03', 'Construir', 'Creamos software mantenible y útil para quienes lo ponen en práctica.'],
+  ['04', 'Evolucionar', 'Aprendemos de la operación y dejamos espacio para que cada solución mejore con el tiempo.']
+];
+
+const commitments = [
+  ['Arquitectura mantenible', 'Separamos responsabilidades y elegimos estructuras que puedan evolucionar con claridad.'],
+  ['Seguridad desde el origen', 'Integramos la seguridad en las decisiones iniciales, no como una etapa al final.'],
+  ['Decisiones documentadas', 'Hacemos visibles las decisiones para poder revisarlas, aprender y mejorar.'],
+  ['Evolución responsable', 'Consideramos el impacto de lo que ponemos en operación y la capacidad de mantenerlo.']
 ];
 ---
-<BaseLayout title="Ingeniería | Hesed Core" description="La forma en que Hesed Core construye plataformas y productos digitales." path="/ingenieria">
-  <InternalPageHero eyebrow="Ingeniería" title="Ingeniería guiada por decisiones, no por tendencias." description="Seleccionamos tecnologías y patrones según las necesidades de cada producto. Buscamos claridad, mantenibilidad, seguridad y capacidad de evolución." variant="engineering"><InternalVisual variant="engineering" /></InternalPageHero>
-  <section class="content-section"><div class="container"><div class="decision-list">{decisions.map((item, index) => <article><span>0{index + 1}</span><div><h2>{item[0]}</h2><p>{item[1]}</p></div></article>)}</div></div></section>
-  <section id="tecnologia" class="content-section dark-content"><div class="container"><p class="eyebrow">Arquitectura y tecnología</p><h2>Herramientas elegidas por el problema que ayudan a resolver.</h2><div class="technology-list"><span>React y TypeScript para plataformas web</span><span>Flutter para experiencias multiplataforma</span><span>Python y FastAPI para servicios backend</span><span>PostgreSQL y Redis para persistencia y operación</span><span>MinIO para almacenamiento de objetos</span><span>Docker para entornos reproducibles</span></div></div></section>
-</BaseLayout>
+
+<CorporateInternalLayoutV2
+  title="Ingeniería | Hesed Core"
+  description="La forma en que Hesed Core construye plataformas y productos digitales."
+  path="/ingenieria"
+>
+  <InternalHeroV2
+    page="engineering"
+    eyebrow="Nuestra forma de construir"
+    title="La ingeniería también es una forma de decidir."
+    description="Seleccionamos tecnologías y patrones según las necesidades de cada producto. Buscamos claridad, mantenibilidad, seguridad y capacidad de evolución."
+  />
+
+  <section class="v2-engineering-manifesto">
+    <div class="v2-wrap v2-engineering-manifesto__inner">
+      <p class="v2-section-index">01 / Intención</p>
+      <div>
+        <h2>La ingeniería empieza antes de escribir código.</h2>
+        <p>
+          Empieza al escuchar, cuestionar supuestos y entender el contexto. Las decisiones
+          técnicas tienen consecuencias para las personas, los productos y quienes los mantienen.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="v2-engineering-method" aria-labelledby="v2-engineering-method-title">
+    <div class="v2-wrap">
+      <div class="v2-editorial-heading">
+        <p class="v2-eyebrow">02 / Método</p>
+        <h2 id="v2-engineering-method-title">Un proceso que aprende mientras construye.</h2>
+      </div>
+      <ol class="v2-engineering-method__list">
+        {method.map(([number, title, description]) => (
+          <li>
+            <span>{number}</span>
+            <div><h3>{title}</h3><p>{description}</p></div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="v2-engineering-principles">
+    <div class="v2-wrap">
+      <p class="v2-eyebrow v2-eyebrow--light">03 / Criterios de ingeniería</p>
+      <h2>Fundamentos claros para sostener el cambio.</h2>
+      <div class="v2-engineering-principles__list">
+        {commitments.map(([title, description], index) => (
+          <article>
+            <span>0{index + 1}</span>
+            <div><h3>{title}</h3><p>{description}</p></div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="v2-engineering-close">
+    <div class="v2-wrap">
+      <p class="v2-section-index">04 / Compromiso</p>
+      <h2>Construir con intención también significa saber cómo seguir.</h2>
+      <p>
+        Diseñamos soluciones que puedan revisarse, comprenderse y mantenerse, con decisiones
+        que se adapten al propósito de cada producto.
+      </p>
+    </div>
+  </section>
+
+  <EditorialCtaV2
+    eyebrow="05 / Conversación"
+    title="Conversemos sobre las decisiones detrás de tu próximo producto."
+  />
+</CorporateInternalLayoutV2>

@@ -1,10 +1,72 @@
 ---
-import BaseLayout from '../components/BaseLayout.astro';
-import InternalPageHero from '../components/InternalPageHero.astro';
-import InternalVisual from '../components/InternalVisual.astro';
+import CorporateInternalLayoutV2 from '../layouts/CorporateInternalLayoutV2.astro';
+import InternalHeroV2 from '../components/v2/InternalHeroV2.astro';
+import EditorialCtaV2 from '../components/v2/EditorialCtaV2.astro';
 ---
-<BaseLayout title="Empresa | Hesed Core" description="El propósito y la cultura de Hesed Core, empresa mexicana de ingeniería de software." path="/empresa">
-  <InternalPageHero eyebrow="Empresa" title="Ingeniería de software con propósito." description="Hesed Core nace de la decisión de construir tecnología con fundamentos claros: arquitectura mantenible, seguridad desde el origen y responsabilidad sobre lo que ponemos en operación." variant="company" accent="coral"><InternalVisual variant="manifesto" /></InternalPageHero>
-  <section class="content-section"><div class="container manifesto-grid"><article><p class="eyebrow">Propósito</p><h2>Construir tecnología que merezca confianza.</h2><p>Trabajamos cerca de clientes y usuarios para convertir necesidades reales en soluciones claras, mantenibles y preparadas para evolucionar.</p></article><article><p class="eyebrow">Cultura</p><h2>Cercanía, responsabilidad y evolución continua.</h2><p>Security by Culture expresa una forma de trabajar: aprender, documentar decisiones y cuidar el impacto de lo que construimos.</p></article></div></section>
-  <section class="content-section dark-content"><div class="container location-block"><p class="eyebrow">Desde México</p><h2>García, Nuevo León, México.</h2><p>Una empresa de ingeniería cercana a las personas y a los problemas que la tecnología puede ayudar a resolver.</p></div></section>
-</BaseLayout>
+
+<CorporateInternalLayoutV2
+  title="Empresa | Hesed Core"
+  description="El propósito y la cultura de Hesed Core, empresa mexicana de ingeniería de software."
+  path="/empresa"
+>
+  <InternalHeroV2
+    page="company"
+    eyebrow="Hesed Core"
+    title="Ingeniería, propósito y evolución."
+    description="Hesed Core nace de la decisión de construir tecnología con fundamentos claros: arquitectura mantenible, seguridad desde el origen y responsabilidad sobre lo que ponemos en operación."
+    imageSrc="/hesed-core-isotipo-transparente.png"
+    imageAlt=""
+  />
+
+  <section class="v2-company-purpose">
+    <div class="v2-wrap v2-company-purpose__inner">
+      <p class="v2-section-index">01 / Propósito</p>
+      <div>
+        <p class="v2-company-purpose__motto">Ingeniería de Software con Propósito.</p>
+        <h2>Construir tecnología que merezca confianza.</h2>
+        <p>
+          Trabajamos cerca de clientes y usuarios para convertir necesidades reales en soluciones
+          claras, mantenibles y preparadas para evolucionar.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="v2-company-culture">
+    <div class="v2-wrap v2-company-culture__inner">
+      <p class="v2-eyebrow v2-eyebrow--light">02 / Cultura</p>
+      <h2>Cercanía, responsabilidad y evolución continua.</h2>
+      <p>
+        Security by Culture expresa una forma de trabajar: aprender, documentar decisiones
+        y cuidar el impacto de lo que construimos.
+      </p>
+    </div>
+  </section>
+
+  <section class="v2-company-decisions">
+    <div class="v2-wrap v2-company-decisions__inner">
+      <p class="v2-section-index">03 / Decisiones</p>
+      <div>
+        <h2>El propósito se demuestra en lo que elegimos construir y mantener.</h2>
+        <p>
+          Buscamos comprender el contexto antes de proponer una solución, elegir fundamentos
+          adecuados a cada producto y asumir responsabilidad sobre su evolución.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="v2-company-location">
+    <div class="v2-wrap">
+      <p class="v2-eyebrow">04 / Desde México</p>
+      <h2>García, Nuevo León, México.</h2>
+      <p>Una empresa de ingeniería cercana a las personas y a los problemas que la tecnología puede ayudar a resolver.</p>
+    </div>
+  </section>
+
+  <EditorialCtaV2
+    eyebrow="05 / Contacto"
+    title="Construyamos tecnología con intención y visión de largo plazo."
+    description="Conversemos sobre aquello que necesitas resolver."
+  />
+</CorporateInternalLayoutV2>

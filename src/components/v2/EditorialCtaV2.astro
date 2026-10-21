@@ -1,0 +1,29 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  href?: string;
+  label?: string;
+  tone?: 'light' | 'dark';
+}
+
+const {
+  eyebrow = 'Siguiente paso',
+  title,
+  description,
+  href = '/contacto',
+  label = 'Hablar con Hesed Core',
+  tone = 'light'
+} = Astro.props;
+---
+<section class:list={['v2-editorial-cta', `v2-editorial-cta--${tone}`]}>
+  <div class="v2-wrap v2-editorial-cta__inner">
+    <p class:list={['v2-eyebrow', tone === 'dark' && 'v2-eyebrow--light']}>{eyebrow}</p>
+    <h2>{title}</h2>
+    {description && <p class="v2-editorial-cta__description">{description}</p>}
+    <a class="v2-button v2-button--cta" href={href}>
+      {label} <span aria-hidden="true">↗</span>
+    </a>
+  </div>
+</section>
