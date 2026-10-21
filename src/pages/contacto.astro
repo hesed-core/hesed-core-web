@@ -1,0 +1,33 @@
+---
+import CorporateInternalLayoutV2 from '../layouts/CorporateInternalLayoutV2.astro';
+import InternalHeroV2 from '../components/v2/InternalHeroV2.astro';
+---
+
+<CorporateInternalLayoutV2
+  title="Contacto | Hesed Core"
+  description="Conversemos sobre lo que necesitas construir con Hesed Core."
+  path="/contacto"
+>
+  <InternalHeroV2
+    page="contact"
+    eyebrow="Contacto"
+    title="Conversemos sobre lo que necesitas construir."
+    description="Cuéntanos el reto. Nosotros ayudamos a convertirlo en una solución clara, mantenible y preparada para evolucionar."
+  />
+
+  <section class="v2-contact">
+    <div class="v2-wrap v2-contact__inner">
+      <p class="v2-section-index">01 / Una conversación</p>
+      <div class="v2-contact__copy">
+        <h2>Una conversación puede ser el primer paso.</h2>
+        <p>Escríbenos y comparte el contexto que consideres importante.</p>
+      </div>
+      <address class="v2-contact__details">
+        <a class="v2-contact__email" href="mailto:contacto@hesedcore.com">contacto@hesedcore.com</a>
+        <p>García, Nuevo León, México</p>
+        <p>Lunes a viernes · 8:00 a 18:00</p>
+        <a class="v2-button" href="mailto:contacto@hesedcore.com">Enviar correo</a>
+      </address>
+    </div>
+  </section>
+</CorporateInternalLayoutV2>

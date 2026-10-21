@@ -1,0 +1,87 @@
+---
+import CorporateInternalLayoutV2 from '../layouts/CorporateInternalLayoutV2.astro';
+import InternalHeroV2 from '../components/v2/InternalHeroV2.astro';
+import EditorialCtaV2 from '../components/v2/EditorialCtaV2.astro';
+
+const principles = [
+  ['01', 'Seguridad desde el diseño', 'La seguridad participa desde las decisiones de arquitectura y construcción.'],
+  ['02', 'Cultura compartida', 'Cuidar la seguridad es una responsabilidad que se practica entre las personas y los equipos.'],
+  ['03', 'Evolución continua', 'Aprendemos, revisamos y fortalecemos nuestras prácticas a medida que los productos crecen.']
+];
+---
+
+<CorporateInternalLayoutV2
+  title="Seguridad | Hesed Core"
+  description="Security by Culture: principios de seguridad que guían el trabajo de Hesed Core."
+  path="/seguridad"
+  themeColor="#08131F"
+>
+  <InternalHeroV2
+    page="security"
+    theme="dark"
+    eyebrow="Security by Culture"
+    title="La seguridad se diseña, se practica y se sostiene entre todos."
+    description="Integramos seguridad desde la arquitectura, sin prometer absolutos ni afirmar certificaciones que no estén documentadas."
+    imageSrc="/logo_security_by_culture.png"
+    imageAlt="Hesed Core — Security by Culture"
+    imageWidth={2172}
+    imageHeight={724}
+  />
+
+  <section class="v2-security-statement">
+    <div class="v2-wrap v2-security-statement__inner">
+      <p class="v2-section-index">01 / Principio</p>
+      <h2>La seguridad no se agrega al final. Se convierte en una forma de construir.</h2>
+    </div>
+  </section>
+
+  <section class="v2-security-principles" aria-labelledby="v2-security-principles-title">
+    <div class="v2-wrap">
+      <div class="v2-editorial-heading">
+        <p class="v2-eyebrow">02 / Práctica compartida</p>
+        <h2 id="v2-security-principles-title">Una responsabilidad distribuida en cada decisión.</h2>
+      </div>
+      <ol>
+        {principles.map(([number, title, description]) => (
+          <li>
+            <span>{number}</span>
+            <h3>{title}</h3>
+            <p>{description}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="v2-security-human">
+    <div class="v2-wrap v2-security-human__inner">
+      <p class="v2-eyebrow v2-eyebrow--light">03 / Responsabilidad</p>
+      <h2>La seguridad se sostiene entre personas, prácticas y decisiones.</h2>
+      <p>
+        La cultura de seguridad implica atención constante y responsabilidad compartida.
+        Es parte del trabajo cotidiano, desde cómo pensamos una solución hasta cómo la mantenemos.
+      </p>
+    </div>
+  </section>
+
+  <section class="v2-security-evolution">
+    <div class="v2-wrap v2-security-evolution__inner">
+      <p class="v2-section-index">04 / Evolución</p>
+      <div>
+        <h2>Claridad sobre lo que existe y lo que sigue creciendo.</h2>
+        <p>
+          Las capacidades de identidad, MFA, recuperación, sesiones y autorización forman parte
+          de la base actual. La trazabilidad, la revisión continua y la concientización se
+          fortalecen de manera progresiva.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <EditorialCtaV2
+    eyebrow="05 / Security by Culture"
+    title="La confianza se construye con atención y responsabilidad."
+    label="Conversar con Hesed Core"
+    tone="dark"
+  />
+</CorporateInternalLayoutV2>

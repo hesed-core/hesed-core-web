@@ -1,0 +1,37 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  description: string;
+  page: 'platform' | 'products' | 'engineering' | 'security' | 'company' | 'contact';
+  theme?: 'light' | 'dark';
+  imageSrc?: string;
+  imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+}
+
+const {
+  eyebrow,
+  title,
+  description,
+  page,
+  theme = 'light',
+  imageSrc,
+  imageAlt = '',
+  imageWidth = 1280,
+  imageHeight = 1280
+} = Astro.props;
+---
+<section class:list={['v2-internal-hero', `v2-internal-hero--${page}`, `v2-internal-hero--${theme}`]} aria-labelledby={`${page}-page-title`}>
+  <div class="v2-wrap v2-internal-hero__content">
+    <p class="v2-eyebrow">{eyebrow}</p>
+    <h1 id={`${page}-page-title`}>{title}</h1>
+    <p class="v2-internal-hero__description">{description}</p>
+    {imageSrc && (
+      <div class="v2-internal-hero__image">
+        <img src={imageSrc} alt={imageAlt} width={imageWidth} height={imageHeight} />
+      </div>
+    )}
+  </div>
+</section>

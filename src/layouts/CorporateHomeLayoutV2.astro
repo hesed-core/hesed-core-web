@@ -1,0 +1,55 @@
+---
+import Analytics from '@vercel/analytics/astro';
+import '../styles/design-system-v2.css';
+
+interface Props {
+  title: string;
+  description: string;
+  path?: string;
+  themeColor?: string;
+}
+
+const { title, description, path = '/', themeColor = '#F5F2EA' } = Astro.props;
+const canonical = new URL(path, Astro.site ?? 'https://hesedcore.com');
+const socialImage = new URL('/hesed-core-isotipo-transparente.png', canonical.origin);
+const isVercelDeployment = import.meta.env.VERCEL === '1';
+---
+<!doctype html>
+<html lang="es-MX">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content={themeColor} />
+    <link rel="icon" type="image/png" href="/hesed-core-isotipo-transparente.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="canonical" href={canonical} />
+    <meta name="description" content={description} />
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Hesed Core" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1254" />
+    <meta property="og:image:height" content="1254" />
+    <meta property="og:image:alt" content="Isotipo de Hesed Core" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+    <meta name="twitter:image:alt" content="Isotipo de Hesed Core" />
+    <title>{title}</title>
+    {isVercelDeployment && <Analytics />}
+  </head>
+  <body class="editorial-site">
+    <a class="v2-skip-link" href="#main-content">Saltar al contenido</a>
+    <slot />
+  </body>
+</html>

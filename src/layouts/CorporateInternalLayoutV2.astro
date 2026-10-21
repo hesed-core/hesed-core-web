@@ -1,0 +1,21 @@
+---
+import CorporateHomeLayoutV2 from './CorporateHomeLayoutV2.astro';
+import CorporateHeaderV2 from '../components/v2/CorporateHeaderV2.astro';
+import CorporateFooterV2 from '../components/v2/CorporateFooterV2.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  themeColor?: string;
+}
+
+const { title, description, path, themeColor = '#F5F2EA' } = Astro.props;
+---
+<CorporateHomeLayoutV2 title={title} description={description} path={path} themeColor={themeColor}>
+  <CorporateHeaderV2 currentPath={path} />
+  <main id="main-content" tabindex="-1">
+    <slot />
+  </main>
+  <CorporateFooterV2 />
+</CorporateHomeLayoutV2>

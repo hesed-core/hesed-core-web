@@ -1,0 +1,82 @@
+---
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '/' } = Astro.props;
+---
+<header class="v2-header" data-v2-header>
+  <div class="v2-header__inner">
+    <a class="v2-brand" href="/" aria-label="Hesed Core, inicio" aria-current={currentPath === '/' ? 'page' : undefined}>
+      <img src="/hesed-core-isotipo-transparente.png" alt="" width="40" height="40" />
+      <span><strong>HESED</strong><span>CORE</span></span>
+    </a>
+
+    <nav class="v2-nav" id="v2-primary-nav" aria-label="Navegación principal">
+      <a href="/plataforma" aria-current={currentPath === '/plataforma' ? 'page' : undefined}>Plataforma</a>
+      <a href="/productos" aria-current={currentPath === '/productos' ? 'page' : undefined}>Productos</a>
+      <a href="/ingenieria" aria-current={currentPath === '/ingenieria' ? 'page' : undefined}>Ingeniería</a>
+      <a href="/seguridad" aria-current={currentPath === '/seguridad' ? 'page' : undefined}>Seguridad</a>
+      <a href="/empresa" aria-current={currentPath === '/empresa' ? 'page' : undefined}>Empresa</a>
+    </nav>
+
+    <a class="v2-button v2-button--header" href="/contacto" aria-current={currentPath === '/contacto' ? 'page' : undefined}>Hablar con Hesed Core</a>
+    <button
+      class="v2-menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="v2-mobile-menu"
+      aria-label="Abrir menú"
+      data-v2-menu-toggle
+    >
+      <span></span><span></span>
+    </button>
+  </div>
+
+  <nav class="v2-mobile-menu" id="v2-mobile-menu" aria-label="Navegación móvil" hidden>
+    <a href="/plataforma" aria-current={currentPath === '/plataforma' ? 'page' : undefined}>Plataforma</a>
+    <a href="/productos" aria-current={currentPath === '/productos' ? 'page' : undefined}>Productos</a>
+    <a href="/ingenieria" aria-current={currentPath === '/ingenieria' ? 'page' : undefined}>Ingeniería</a>
+    <a href="/seguridad" aria-current={currentPath === '/seguridad' ? 'page' : undefined}>Seguridad</a>
+    <a href="/empresa" aria-current={currentPath === '/empresa' ? 'page' : undefined}>Empresa</a>
+    <a class="v2-button v2-button--mobile" href="/contacto" aria-current={currentPath === '/contacto' ? 'page' : undefined}>Hablar con Hesed Core</a>
+  </nav>
+</header>
+
+<script>
+  const header = document.querySelector<HTMLElement>('[data-v2-header]');
+  const toggle = document.querySelector<HTMLButtonElement>('[data-v2-menu-toggle]');
+  const mobileMenu = document.querySelector<HTMLElement>('#v2-mobile-menu');
+
+  const setMenuOpen = (open: boolean) => {
+    if (!toggle || !mobileMenu) return;
+    mobileMenu.hidden = !open;
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+  };
+
+  toggle?.addEventListener('click', () => {
+    setMenuOpen(toggle.getAttribute('aria-expanded') !== 'true');
+  });
+
+  mobileMenu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => setMenuOpen(false));
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && toggle?.getAttribute('aria-expanded') === 'true') {
+      setMenuOpen(false);
+      toggle.focus();
+    }
+  });
+
+  const updateHeader = () => {
+    header?.classList.toggle('is-scrolled', window.scrollY > 8);
+  };
+
+  updateHeader();
+  window.addEventListener('scroll', updateHeader, { passive: true });
+  window.matchMedia('(min-width: 901px)').addEventListener('change', (event) => {
+    if (event.matches) setMenuOpen(false);
+  });
+</script>

@@ -1,0 +1,45 @@
+---
+const principles = [
+  {
+    number: '01',
+    title: 'Comprender',
+    description: 'Escuchamos a las personas y definimos con claridad el problema que vale la pena resolver.'
+  },
+  {
+    number: '02',
+    title: 'Diseñar',
+    description: 'Tomamos decisiones de producto y arquitectura con intención, contexto y responsabilidad.'
+  },
+  {
+    number: '03',
+    title: 'Construir',
+    description: 'Creamos software mantenible, seguro y útil para quienes lo ponen en práctica.'
+  },
+  {
+    number: '04',
+    title: 'Evolucionar',
+    description: 'Aprendemos de la operación y dejamos espacio para que cada solución mejore con el tiempo.'
+  }
+];
+---
+<section class="v2-method" aria-labelledby="v2-method-title">
+  <div class="v2-wrap">
+    <div class="v2-method__heading">
+      <div>
+        <p class="v2-eyebrow">03 / Forma de construir</p>
+        <h2 id="v2-method-title">El propósito también está en el proceso.</h2>
+      </div>
+      <p>Una práctica de ingeniería que conecta comprensión, criterio y evolución continua.</p>
+    </div>
+
+    <ol class="v2-method__list">
+      {principles.map((principle) => (
+        <li>
+          <span class="v2-method__number">{principle.number}</span>
+          <h3>{principle.title}</h3>
+          <p>{principle.description}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

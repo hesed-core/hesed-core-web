@@ -1,0 +1,110 @@
+---
+import CorporateInternalLayoutV2 from '../layouts/CorporateInternalLayoutV2.astro';
+import InternalHeroV2 from '../components/v2/InternalHeroV2.astro';
+import EditorialCtaV2 from '../components/v2/EditorialCtaV2.astro';
+---
+
+<CorporateInternalLayoutV2
+  title="Productos | Hesed Core"
+  description="TrimmOS y la visión futura de productos digitales de Hesed Core."
+  path="/productos"
+>
+  <InternalHeroV2
+    page="products"
+    eyebrow="Productos"
+    title="Productos distintos. Fundamentos compartidos."
+    description="Construimos experiencias independientes sobre fundamentos tecnológicos mantenibles, con espacio para evolucionar sin perder identidad."
+  />
+
+  <section class="v2-products-intro">
+    <div class="v2-wrap v2-products-intro__inner">
+      <p class="v2-section-index">01 / Ecosistema</p>
+      <p>
+        Cada producto responde a una necesidad propia. La ingeniería compartida crea continuidad
+        en la base y libertad para diseñar experiencias con propósito.
+      </p>
+    </div>
+  </section>
+
+  <section class="v2-products-catalog" aria-label="Productos y plataformas de Hesed Core">
+    <article class="v2-catalog-feature">
+      <div class="v2-wrap v2-catalog-feature__inner">
+        <div class="v2-catalog-feature__copy">
+          <p class="v2-eyebrow">01 / Producto principal · Próximo lanzamiento</p>
+          <h2>TrimmOS</h2>
+          <p>
+            Plataforma operativa para barberías y negocios de belleza, diseñada para centralizar
+            agenda, servicios, clientes, personal y administración.
+          </p>
+          <div class="v2-catalog-feature__actions">
+            <a class="v2-button" href="https://trimmos.com" target="_blank" rel="noopener noreferrer">
+              Visitar TrimmOS <span aria-hidden="true">↗</span>
+            </a>
+            <a class="v2-text-link" href="/productos#vision">Visión de producto <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <img
+          class="v2-catalog-feature__logo"
+          src="/logo.png"
+          alt="Logo oficial de TrimmOS"
+          width="1536"
+          height="1024"
+          loading="lazy"
+        />
+      </div>
+    </article>
+
+    <article class="v2-catalog-row">
+      <div class="v2-wrap v2-catalog-row__inner">
+        <span class="v2-catalog-row__number">02</span>
+        <div>
+          <p class="v2-eyebrow">Plataforma · Capacidades compartidas</p>
+          <h2>Hesed Core Platform</h2>
+        </div>
+        <div class="v2-catalog-row__description">
+          <p>El núcleo tecnológico compartido para productos con identidad y responsabilidades separadas.</p>
+          <a class="v2-text-link" href="/plataforma">Conocer la plataforma <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </article>
+
+    <article class="v2-catalog-row">
+      <div class="v2-wrap v2-catalog-row__inner">
+        <span class="v2-catalog-row__number">03</span>
+        <div>
+          <p class="v2-eyebrow">Plataforma · Experiencia del cliente</p>
+          <h2>Hesed Customer Platform</h2>
+        </div>
+        <div class="v2-catalog-row__description">
+          <p>Una experiencia independiente que conserva su identidad sobre fundamentos compartidos.</p>
+          <a class="v2-text-link" href="/plataforma">Explorar el ecosistema <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="v2-future-products" id="vision">
+    <div class="v2-wrap">
+      <p class="v2-eyebrow">04 / Visión de producto</p>
+      <h2>Iniciativas futuras, comunicadas con honestidad.</h2>
+      <div class="v2-future-products__list">
+        <article>
+          <span>En conceptualización</span>
+          <h3>Plataforma de Rentas</h3>
+          <p>Una futura experiencia digital orientada a simplificar la administración y relación alrededor de la renta de viviendas.</p>
+        </article>
+        <article>
+          <span>En visión</span>
+          <h3>E-ComerCore</h3>
+          <p>Una futura solución de comercio digital concebida para integrar operación, catálogo y experiencia comercial.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <EditorialCtaV2
+    eyebrow="05 / Hablemos"
+    title="Cada producto empieza por entender una necesidad real."
+    description="Cuéntanos qué estás buscando construir."
+  />
+</CorporateInternalLayoutV2>
